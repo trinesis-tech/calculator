@@ -4,33 +4,62 @@ import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 export default class App extends React.Component {
   constructor(){
     super();
-    this.state={};
+    this.state={
+      resultText: ""
+    };
   }
+
+  calculateResult(){
+    const text = this.state.resultText
+    // do magic
+  }
+
+  buttonPressed(text){
+    if(text == '='){
+      return this.calculateResult
+    }
+    this.setState({
+      resultText: this.state.resultText+text
+    })
+  }
+
+  operate(operation){
+    switch(operation) {
+      case 'DEL':
+              let text = this.state.resultText.split('')
+              text.pop()
+              this.setState({
+                resultText: text.join('')
+              })
+
+    }
+  }
+
   render() {
     let rows =[];
-    let nums =[[1,2,3],[4,5,6],[7,8,9],[0,0,'=']];
+    let nums =[[1,2,3],[4,5,6],[7,8,9],['.',0,'=']];
     for(let i=0; i<4;i++){
       let row =[];
       for(let j=0; j<3 ;j++){
         row.push(<TouchableOpacity style={styles.btn}>
-                    <Text style={styles.btntext}>{nums[i][j]}</Text>
+                    <Text onPress={() => this.buttonPressed(nums[i][j])} style={styles.btntext}>{nums[i][j]}</Text>
                  </TouchableOpacity>);
       }
       rows.push(<View style={styles.row}>{row}</View>);
     }
 
-    let operations=['+','-','x','/'];
+    let operations=['DEL','+','-','x','/'];
     let ops = [];
     for(let i=0; i<4; i++){
-      ops.push(<TouchableOpacity style={styles.btn}>
+      ops.push(<TouchableOpacity style={styles.btn} onPress={() => this.operate(operations[i])}>
         <Text style={[styles.btntext, styles.white]}>{operations[i]}</Text>
      </TouchableOpacity>)
-    }
+    } 
 
     return (
       <View style={styles.container}>
         <View style={styles.result}>
-          <Text style={styles.resultText}>11*11</Text>
+          <Text style={styles.resultText}>{this.state.resultText}</Text>
         </View>
         <View style={styles.calculation}>
           <Text style={styles.calculationText}> 121 </Text>
