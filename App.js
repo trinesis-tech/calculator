@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
 export default class App extends React.Component {
   constructor(){
@@ -7,6 +7,26 @@ export default class App extends React.Component {
     this.state={};
   }
   render() {
+    let rows =[];
+    let nums =[[1,2,3],[4,5,6],[7,8,9],[0,0,'=']];
+    for(let i=0; i<4;i++){
+      let row =[];
+      for(let j=0; j<3 ;j++){
+        row.push(<TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btntext}>{nums[i][j]}</Text>
+                 </TouchableOpacity>);
+      }
+      rows.push(<View style={styles.row}>{row}</View>);
+    }
+
+    let operations=['+','-','x','/'];
+    let ops = [];
+    for(let i=0; i<4; i++){
+      ops.push(<TouchableOpacity style={styles.btn}>
+        <Text style={[styles.btntext, styles.white]}>{operations[i]}</Text>
+     </TouchableOpacity>)
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.result}>
@@ -17,32 +37,10 @@ export default class App extends React.Component {
         </View>
         <View style={styles.buttons}>
           <View style={styles.numbers}>
-            <View style={styles.row}>
-              <Button title="0" />
-              <Button title="0" />
-              <Button title="0" />
-            </View>
-            <View style={styles.row}>
-              <Button title="0" />
-              <Button title="0" />
-              <Button title="0" />
-            </View>
-            <View style={styles.row}>
-              <Button title="0" />
-              <Button title="0" />
-              <Button title="0" />
-            </View>
-            <View style={styles.row}>
-              <Button title="0" />
-              <Button title="0" />
-              <Button title="0" />
-            </View>
+            {rows}
           </View>
           <View style={styles.operations}>
-            <Button title="+" />
-            <Button title="+" />
-            <Button title="+" />
-            <Button title="+" />
+            {ops}
           </View>
         </View>
       </View>
@@ -59,6 +57,19 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'space-around',
       alignItems: 'center'
+    },
+    btntext: {
+      fontSize: 30,
+
+    },
+    white: {
+      color: 'white'
+    },
+    btn: {
+      flex: 1,
+      alignItems: 'center',
+      alignSelf: 'stretch',
+      justifyContent: 'center'
     },
     calculationText: {
       fontSize: 24,
