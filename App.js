@@ -19,9 +19,21 @@ export default class App extends React.Component {
     })
   }
 
+  validate(){
+    const text = this.props.resultText
+    switch(text.slice(-1)){
+      case '+':
+      case '-':
+      case 'x':
+      case '/':
+      return false
+    }
+    return true
+  }
+
   buttonPressed(text){
     if(text == '='){
-      return this.calculateResult
+      return this.validate() &&  this.calculateResult()
     }
     this.setState({
       resultText: this.state.resultText+text
