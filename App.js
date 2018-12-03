@@ -18,9 +18,8 @@ export default class App extends React.Component {
       calculationText: eval(text)
     })
   }
-
   validate(){
-    const text = this.props.resultText
+    const text = this.state.resultText
     switch(text.slice(-1)){
       case '+':
       case '-':
@@ -30,6 +29,7 @@ export default class App extends React.Component {
     }
     return true
   }
+  
 
   buttonPressed(text){
     if(text == '='){
@@ -66,6 +66,8 @@ export default class App extends React.Component {
 
     }
   }
+
+  
 
   render() {
     let rows =[];
