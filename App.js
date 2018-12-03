@@ -75,16 +75,16 @@ export default class App extends React.Component {
     for(let i=0; i<4;i++){
       let row =[];
       for(let j=0; j<3 ;j++){
-        row.push(<TouchableOpacity style={styles.btn}>
+        row.push(<TouchableOpacity key={nums[i][j]} style={styles.btn}>
                     <Text onPress={() => this.buttonPressed(nums[i][j])} style={styles.btntext}>{nums[i][j]}</Text>
                  </TouchableOpacity>);
       }
-      rows.push(<View style={styles.row}>{row}</View>);
+      rows.push(<View key ={i} style={styles.row}>{row}</View>);
     }
 
     let ops = [];
     for(let i=0; i<5; i++){
-      ops.push(<TouchableOpacity style={styles.btn} onPress={() => this.operate(this.operations[i])}>
+      ops.push(<TouchableOpacity key={this.operations[i]} style={styles.btn} onPress={() => this.operate(this.operations[i])}>
         <Text style={[styles.btntext, styles.white]}>{this.operations[i]}</Text>
      </TouchableOpacity>)
     } 
