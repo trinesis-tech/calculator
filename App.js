@@ -143,13 +143,13 @@ const styles = StyleSheet.create({
     },
     result: {
       flex: 2,
-      backgroundColor: 'red',
+      backgroundColor: '#8bc2f9',
       justifyContent: 'center',
       alignItems: 'flex-end'
     },
     calculation: {
       flex: 1,
-      backgroundColor: 'green',
+      backgroundColor: '#4ba0f4',
       justifyContent: 'center',
       alignItems: 'flex-end'
     },
@@ -159,12 +159,12 @@ const styles = StyleSheet.create({
     },
     numbers: {
       flex: 3,
-      backgroundColor: 'yellow'
+      backgroundColor: '#82868c'
     },
     operations: {
       flex: 1,
       justifyContent: 'space-around',
       alignItems: 'stretch',
-      backgroundColor: 'black'
+      backgroundColor: '#b8babc'
     }
 });
