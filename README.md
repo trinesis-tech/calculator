@@ -1,6 +1,8 @@
 # ReactNative_Calculator
 A simple calculator App using React  Native (beeing tested on Android)
 
+![Alt Text] (https://raw.githubusercontent.com/ansnoussi/ReactNative_Calculator/master/screenshot.png)
+
 ## How to test On Android
 change dir to ReactNative_Calculator
 
