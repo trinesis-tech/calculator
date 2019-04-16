@@ -15,7 +15,7 @@ export default class App extends React.Component {
     const text = this.state.resultText
     // do magic
     this.setState({
-      calculationText: eval(text)
+      calculationText: Sring(eval(text))
     })
   }
   validate(){
